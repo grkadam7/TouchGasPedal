@@ -25,7 +25,7 @@ Most modern AI applications share an unspoken goal: **maximize screen time.** Wh
 
 ## 🚀 Live Demo & Repository
 
-- **GitHub Repository:** [https://github.com/your-username/touchgaspedal](https://github.com/your-username/touchgaspedal) *(Permissive MIT License)*
+- **GitHub Repository:** [https://github.com/grkadam7/TouchGasPedal](https://github.com/grkadam7/TouchGasPedal) *(Permissive MIT License)*
 - **Live Demo / Walkthrough:** [https://touchgaspedal.onrender.com](https://touchgaspedal.onrender.com) *(or your deployed URL / video link)*
 
 ---

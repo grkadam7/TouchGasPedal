@@ -45,8 +45,8 @@ Most AI apps keep you glued to your phone screen: chatting back and forth, gener
 ### 1. Clone & Install
 
 ```bash
-git clone https://github.com/your-username/touchgaspedal.git
-cd touchgaspedal
+git clone https://github.com/grkadam7/TouchGasPedal.git
+cd TouchGasPedal
 npm install
 ```
 
