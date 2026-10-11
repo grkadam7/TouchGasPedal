@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: touchgaspedal
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: 20.0.0
+      - key: GEMINI_API_KEY
+        sync: false

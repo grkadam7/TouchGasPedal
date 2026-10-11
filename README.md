@@ -4,6 +4,7 @@
 > An open-source driving route curator powered by Google's open-weight **Gemma** model, built for the **Hacktoberfest 2026 "Touch Grass" DEV Challenge**.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/grkadam7/TouchGasPedal)
 [![Hacktoberfest](https://img.shields.io/badge/Hacktoberfest-2026-orange.svg)](https://hacktoberfest.com)
 [![Gemma AI](https://img.shields.io/badge/Powered%20By-Gemma%20Open--Weight-blue.svg)](https://ai.google.dev/gemma)
 

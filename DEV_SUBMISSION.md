@@ -78,9 +78,12 @@ For an application that actively encourages people to unplug and venture into th
 
 ---
 
-## 🎯 Partner & Featured Track Entry
+## 🎯 Partner & Featured Track Entries
 
-This project proudly enters the **Best Use of Gemma** category ($200) by demonstrating how Google's open-weight model can be put to work solving real-world digital detox problems.
+This project is submitted to two prize tracks:
+
+1. **Best Use of Gemma ($200):** Leverages Google's lightweight, open-weight models for fast local/offline-ready driving route synthesis and real-world exploration challenges.
+2. **Best Use of Render ($200):** Includes an infrastructure-as-code `render.yaml` blueprint enabling 1-click cloud deployments on Render's free web service tier.
 
 ---
 
