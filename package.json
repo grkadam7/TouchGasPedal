@@ -1,0 +1,26 @@
+{
+  "name": "touchgaspedal",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "AI-powered driving route discovery app — Touch Grass by touching the gas pedal! Built with Gemma open-weight models for Hacktoberfest 2026.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": [
+    "hacktoberfest",
+    "open-source-ai",
+    "gemma",
+    "driving",
+    "touch-grass"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@google/generative-ai": "^0.21.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0"
+  }
+}

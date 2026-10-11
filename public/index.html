@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TouchGasPedal ⛽ — AI-Powered Drive Discovery</title>
+  <meta name="description" content="Discover amazing driving routes with AI. Pick your mood, set your time, and let open-source AI plan your next adventure on the road.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container">
+      <div class="hero-badge">🌿 Hacktoberfest 2026 — Touch Grass Challenge</div>
+      <h1 class="hero-title">
+        <span class="hero-icon">⛽</span>
+        Touch<span class="highlight">Gas</span>Pedal
+      </h1>
+      <p class="hero-subtitle">
+        AI picks the route. You hit the road.<br>
+        <span class="hero-dim">Powered by Gemma — Google's open-weight model</span>
+      </p>
+    </div>
+  </header>
+
+  <!-- MAIN APP -->
+  <main class="container">
+
+    <!-- Step 1: Mood -->
+    <section class="step" id="step-mood">
+      <div class="step-header">
+        <span class="step-number">01</span>
+        <h2>Pick your vibe</h2>
+      </div>
+      <div class="mood-grid">
+        <button class="mood-card" data-mood="Peaceful & Relaxing">
+          <span class="mood-emoji">🌿</span>
+          <span class="mood-label">Peaceful</span>
+          <span class="mood-desc">Quiet roads, no rush</span>
+        </button>
+        <button class="mood-card" data-mood="Scenic & Beautiful">
+          <span class="mood-emoji">🌄</span>
+          <span class="mood-label">Scenic</span>
+          <span class="mood-desc">Views that take your breath away</span>
+        </button>
+        <button class="mood-card" data-mood="City Cruise & Urban Exploration">
+          <span class="mood-emoji">🏙️</span>
+          <span class="mood-label">City Cruise</span>
+          <span class="mood-desc">Vibe through the streets</span>
+        </button>
+        <button class="mood-card" data-mood="Adventure & Thrilling">
+          <span class="mood-emoji">🏔️</span>
+          <span class="mood-label">Adventure</span>
+          <span class="mood-desc">Twists, turns, surprises</span>
+        </button>
+        <button class="mood-card" data-mood="Night Drive & Chill">
+          <span class="mood-emoji">🌙</span>
+          <span class="mood-label">Night Drive</span>
+          <span class="mood-desc">City lights & empty roads</span>
+        </button>
+        <button class="mood-card" data-mood="Food & Cafe Hopping">
+          <span class="mood-emoji">☕</span>
+          <span class="mood-label">Foodie Run</span>
+          <span class="mood-desc">Drive from bite to bite</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Step 2: Duration -->
+    <section class="step hidden" id="step-duration">
+      <div class="step-header">
+        <span class="step-number">02</span>
+        <h2>How long you got?</h2>
+      </div>
+      <div class="duration-grid">
+        <button class="duration-btn" data-duration="30 minutes">
+          <span class="duration-time">30</span>
+          <span class="duration-unit">min</span>
+          <span class="duration-label">Quick spin</span>
+        </button>
+        <button class="duration-btn" data-duration="1 hour">
+          <span class="duration-time">1</span>
+          <span class="duration-unit">hr</span>
+          <span class="duration-label">Sweet spot</span>
+        </button>
+        <button class="duration-btn" data-duration="2 hours">
+          <span class="duration-time">2</span>
+          <span class="duration-unit">hrs</span>
+          <span class="duration-label">Proper drive</span>
+        </button>
+        <button class="duration-btn" data-duration="3+ hours">
+          <span class="duration-time">3+</span>
+          <span class="duration-unit">hrs</span>
+          <span class="duration-label">Road trip!</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Step 3: Location -->
+    <section class="step hidden" id="step-location">
+      <div class="step-header">
+        <span class="step-number">03</span>
+        <h2>Where are you starting from?</h2>
+      </div>
+      <div class="location-input-group">
+        <div class="location-field">
+          <input
+            type="text"
+            id="location-input"
+            placeholder="e.g. Bangalore, Mumbai, Delhi..."
+            autocomplete="off"
+          >
+          <button id="geo-btn" class="geo-button" title="Use my location">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"/>
+              <path d="M12 2v4M12 18v4M2 12h4M18 12h4"/>
+            </svg>
+          </button>
+        </div>
+        <button id="find-drive-btn" class="cta-button" disabled>
+          <span class="cta-text">Find My Drive</span>
+          <span class="cta-icon">→</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Loading -->
+    <section class="hidden" id="loading-section">
+      <div class="loading-card">
+        <div class="loading-animation">
+          <div class="car-track">
+            <span class="car-emoji">🚗</span>
+            <span class="road-dots">· · · · · · · · · · · · ·</span>
+          </div>
+        </div>
+        <p class="loading-text">Gemma is finding you the perfect route...</p>
+        <p class="loading-subtext">Analyzing roads, weather vibes, and hidden gems</p>
+      </div>
+    </section>
+
+    <!-- Results -->
+    <section class="hidden" id="results-section">
+      <div id="route-card" class="route-card">
+        <!-- Filled by JS -->
+      </div>
+    </section>
+
+    <!-- Error -->
+    <section class="hidden" id="error-section">
+      <div class="error-card">
+        <span class="error-emoji">😅</span>
+        <p class="error-text" id="error-text">Something went wrong</p>
+        <button class="retry-btn" id="retry-btn">Try Again</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <p>
+        Built with ❤️ and <a href="https://ai.google.dev/gemma" target="_blank">Gemma</a> (open-weight AI) for
+        <a href="https://hacktoberfest.com" target="_blank">Hacktoberfest 2026</a>
+      </p>
+      <p class="footer-dim">
+        AI suggests the route. You enjoy the drive. Phone goes in the mount. 🚗💨
+      </p>
+    </div>
+  </footer>
+
+  <script src="/app.js"></script>
+</body>
+</html>
