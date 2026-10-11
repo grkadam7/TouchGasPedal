@@ -18,8 +18,8 @@ app.use(express.static(join(__dirname, 'public')));
 
 // Initialize models
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-const PRIMARY_MODEL = process.env.MODEL_NAME || 'gemma-4-26b-a4b-it';
-const FALLBACK_MODEL = 'gemini-2.5-flash';
+const PRIMARY_MODEL = process.env.MODEL_NAME || 'gemma-4-31b-it';
+const FALLBACK_MODELS = ['gemini-3.8-flash', 'gemini-flash-latest', 'gemini-2.5-flash'];
 
 // System instruction for route generation
 const SYSTEM_PROMPT = `You are TouchGasPedal AI — an expert local driving route curator who helps people discover amazing drives.
@@ -34,28 +34,30 @@ IMPORTANT RULES:
 - Mini-challenges should be things you do OUTSIDE the car at stops (not while driving)
 - Respond with ONLY valid JSON, no markdown, no code fences, no extra text`;
 
-// Helper to generate with fallback
+// Helper to generate with fallback across available models
 async function generateRouteWithGemma(prompt) {
-  const tryModel = async (modelName) => {
-    const m = genAI.getGenerativeModel({ model: modelName });
-    const result = await m.generateContent({
-      contents: [{ role: 'user', parts: [{ text: prompt }] }],
-      systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
-      generationConfig: {
-        temperature: 0.8,
-        maxOutputTokens: 2048,
-        responseMimeType: 'application/json',
-      },
-    });
-    return result.response.text();
-  };
+  const modelsToTry = [PRIMARY_MODEL, ...FALLBACK_MODELS];
 
-  try {
-    return await tryModel(PRIMARY_MODEL);
-  } catch (err) {
-    console.warn(`Primary model (${PRIMARY_MODEL}) failed:`, err.message, `- Falling back to ${FALLBACK_MODEL}`);
-    return await tryModel(FALLBACK_MODEL);
+  for (const modelName of modelsToTry) {
+    try {
+      const m = genAI.getGenerativeModel({ model: modelName });
+      const result = await m.generateContent({
+        contents: [{ role: 'user', parts: [{ text: prompt }] }],
+        systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
+        generationConfig: {
+          temperature: 0.8,
+          maxOutputTokens: 2048,
+          responseMimeType: 'application/json',
+        },
+      });
+      return result.response.text();
+    } catch (err) {
+      console.warn(`Model attempt (${modelName}) failed:`, err.message);
+      // continue to next model in list
+    }
   }
+
+  throw new Error('All model endpoints failed to respond. Please check your API key quota or try again in a moment.');
 }
 
 // Route suggestion endpoint
